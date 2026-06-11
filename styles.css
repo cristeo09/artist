@@ -428,7 +428,7 @@ nav a:hover, nav a.active {
 .product-badge {
     position: absolute;
     top: 15px;
-    right: 15px;
+    left: 15px;
     padding: 0.6rem 1.2rem;
     font-size: 0.85rem;
     font-weight: 900;
