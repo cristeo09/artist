@@ -1199,6 +1199,7 @@ footer::before {
     .footer-socials { justify-content: center !important; }
     section { padding: 4rem 1.5rem !important; }
     .hero h1 { font-size: 18vw !important; }
+    .hero h1::after { bottom: 0; }
     .tour-row {
         flex-direction: column !important;
         text-align: center !important;
