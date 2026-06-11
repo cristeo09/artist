@@ -565,8 +565,20 @@
             qvTouchEndX = e.changedTouches[0].screenX;
             if (!currentQvProductId) return;
             
-            // Piggyback off the main card swipe handler to reuse the math logic
-            handleSwipe(currentQvProductId);
+            const product = products.find(p => p.id === currentQvProductId);
+            if (!product || !product.images || product.images.length <= 1) return;
+            
+            const swipeThreshold = 50;
+            let currentIndex = carouselIndices[currentQvProductId] || 0;
+
+            if (qvTouchEndX < qvTouchStartX - swipeThreshold) {
+                currentIndex = (currentIndex + 1) % product.images.length;
+                setQvImage(currentQvProductId, currentIndex);
+            }
+            if (qvTouchEndX > qvTouchStartX + swipeThreshold) {
+                currentIndex = (currentIndex - 1 + product.images.length) % product.images.length;
+                setQvImage(currentQvProductId, currentIndex);
+            }
         };
     </script>
 </body>
