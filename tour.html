@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTIST | Tour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="nav-logo">ARTIST</a>
+            <div class="nav-right">
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#music">Music</a></li>
+                    <li><a href="store.html">Shop</a></li>
+                    <li><a href="tour.html" class="active">Tour</a></li>
+                </ul>
+                <div class="cart-nav" id="cart-toggle" aria-label="Open Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h3.5l2.5 12h11.5l2.5-8.5H7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="10.5" cy="19.5" r="1.5"/>
+                        <circle cx="17.5" cy="19.5" r="1.5"/>
+                    </svg>
+                    <span class="cart-badge" id="cart-badge" style="display: none;">0</span>
+                </div>
+                <div class="menu-toggle" id="mobile-menu" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="tour-section">
+            <h1>Upcoming Tour dates</h1>
+            <div class="tour-list">
+                <!-- Tour Dates -->
+                <div class="tour-row"><div class="tour-date">15<br>Mar</div><div class="tour-location"><div class="tour-city">Los Angeles, CA</div><div class="tour-venue">The Wiltern</div></div><a href="#" class="btn">Get Tickets</a></div>
+                <div class="tour-row"><div class="tour-date">18<br>Mar</div><div class="tour-location"><div class="tour-city">San Francisco, CA</div><div class="tour-venue">The Warfield</div></div><a href="#" class="btn">Get Tickets</a></div>
+                <div class="tour-row"><div class="tour-date">22<br>Mar</div><div class="tour-location"><div class="tour-city">Chicago, IL</div><div class="tour-venue">Riviera Theatre</div></div><a href="#" class="btn">Get Tickets</a></div>
+                <div class="tour-row"><div class="tour-date">28<br>Mar</div><div class="tour-location"><div class="tour-city">New York, NY</div><div class="tour-venue">Brooklyn Steel</div></div><a href="#" class="btn">Get Tickets</a></div>
+                <div class="tour-row"><div class="tour-date">02<br>Apr</div><div class="tour-location"><div class="tour-city">Atlanta, GA</div><div class="tour-venue">The Tabernacle</div></div><a href="#" class="btn">Get Tickets</a></div>
+                <div class="tour-row"><div class="tour-date">05<br>Apr</div><div class="tour-location"><div class="tour-city">Miami, FL</div><div class="tour-venue">Fillmore Miami Beach</div></div><a href="#" class="btn">Get Tickets</a></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mailing List Section -->
+    <section class="mailing-list">
+        <h2>Join the Club</h2>
+        <p>Get first access to tour dates, exclusive drops, and more.</p>
+        <form id="subscribe-form" class="subscribe-form" action="https://formspree.io/f/mnjybrvo" method="POST" novalidate>
+            <div class="input-wrapper">
+                <input type="email" id="email" name="email" placeholder="Enter your email address" autocomplete="email" required>
+                <div id="error-msg" class="error-msg">Please enter a valid email address.</div>
+            </div>
+            <button type="submit" class="btn">Subscribe</button>
+        </form>
+        <div id="success-msg" class="success-msg">Welcome to the family! Check your inbox shortly.</div>
+    </section>
+
+    <!-- Slide-out Cart -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="close-cart" aria-label="Close Cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span id="cart-total">£0.00</span>
+            </div>
+            <button class="btn" style="width: 100%;" onclick="window.location.href='store.html'">Checkout</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-copy">&copy; <span id="current-year"></span> ARTIST. All Rights Reserved.</div>
+        <div class="footer-socials">
+            <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" aria-label="Spotify">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.394-.756.52-1.15.28-3.153-1.928-7.126-2.366-11.805-1.296-.45.103-.895-.178-.998-.627-.103-.45.178-.895.627-.998 5.105-1.168 9.508-.68 13.045 1.493.394.24.52.756.28 1.15zm1.44-3.238c-.302.492-.947.648-1.44.346-3.6-2.213-9.102-2.825-12.784-1.545-.552.192-1.155-.101-1.347-.653-.192-.552.101-1.155.653-1.347 4.25-1.477 10.354-.805 14.572 1.759.493.302.648.947.346 1.44zm.135-3.402c-4.306-2.557-11.41-2.793-15.52-1.545-.662.201-1.365-.173-1.566-.835-.201-.662.173-1.365.835-1.566 4.743-1.442 12.602-1.171 17.585 1.815.58.345.766 1.093.42 1.673-.346.58-1.093.766-1.674.42z"/></svg>
+            </a>
+            <a href="#" aria-label="Apple Music">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.87 2.235c.784-.962 1.31-2.202 1.155-3.413-1.05.042-2.392.709-3.208 1.671-.726.852-1.353 2.126-1.173 3.315 1.17.09 2.417-.585 3.226-1.573zm4.56 11.236c-.021-2.585 2.086-3.821 2.18-3.879-1.2-1.755-3.076-1.993-3.75-2.029-1.597-.16-3.118 1.05-3.931 1.05-.815 0-2.072-1.01-3.393-.98-1.713.031-3.298.995-4.184 2.535-1.799 3.125-.459 7.747 1.298 10.282.855 1.235 1.868 2.628 3.188 2.576 1.267-.055 1.752-.824 3.284-.824 1.533 0 1.986.824 3.315.795 1.359-.028 2.227-1.264 3.072-2.483 1.03-1.5 1.455-2.955 1.476-3.03-.031-.013-2.756-1.057-2.755-4.013z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Dynamic Year Update
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mailing list form logic
+        const subscribeForm = document.getElementById('subscribe-form');
+        if (subscribeForm) {
+            const emailInput = document.getElementById('email');
+            const errorMsg = document.getElementById('error-msg');
+            const successMsg = document.getElementById('success-msg');
+            
+            emailInput.addEventListener('input', () => {
+                errorMsg.style.display = 'none';
+                emailInput.classList.remove('input-error');
+            });
+
+            subscribeForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                errorMsg.style.display = 'none';
+                successMsg.style.display = 'none';
+                emailInput.classList.remove('input-error');
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value.trim())) {
+                    errorMsg.textContent = 'Please enter a valid email address.';
+                    errorMsg.style.display = 'block';
+                    emailInput.classList.add('input-error');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(this.action, {
+                        method: this.method,
+                        body: new FormData(this),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (response.ok) {
+                        this.style.display = 'none';
+                        successMsg.style.display = 'block';
+                    } else {
+                        errorMsg.textContent = 'Oops! There was a problem submitting your form.';
+                        errorMsg.style.display = 'block';
+                        emailInput.classList.add('input-error');
+                    }
+                } catch (error) {
+                    errorMsg.textContent = 'Oops! There was a problem submitting your form.';
+                    errorMsg.style.display = 'block';
+                    emailInput.classList.add('input-error');
+                }
+            });
+        }
+
+        // Mobile Menu Logic
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        if (mobileMenu && navMenu) {
+            mobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.toggle('is-active');
+                navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('is-active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Cart Sidebar Toggle Logic
+        const cartToggle = document.getElementById('cart-toggle');
+        const closeCartBtn = document.getElementById('close-cart');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartSidebar = document.getElementById('cart-sidebar');
+
+        function openCart() {
+            cartOverlay.classList.add('active');
+            cartSidebar.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            cartOverlay.classList.remove('active');
+            cartSidebar.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (cartToggle) cartToggle.addEventListener('click', openCart);
+        if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
+        if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+        // Cart Persistence & Logic
+        let cart = [];
+        const savedCart = localStorage.getItem('diana_cart');
+        if (savedCart) {
+            try { cart = JSON.parse(savedCart); } catch(e) {}
+        }
+
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalEl = document.getElementById('cart-total');
+        const cartBadge = document.getElementById('cart-badge');
+
+        window.updateQty = function(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCart();
+        };
+
+        window.removeItem = function(index) {
+            cart.splice(index, 1);
+            updateCart();
+        };
+
+        function updateCart() {
+            localStorage.setItem('diana_cart', JSON.stringify(cart));
+            let total = 0;
+            let itemCount = 0;
+            
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart-msg">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 0.5rem; color: #ccc;">
+                            <path d="M4 8h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 19.5V8z" stroke-linejoin="round"/>
+                            <path d="M8 8V5.5A3.5 3.5 0 0 1 11.5 2h1A3.5 3.5 0 0 1 16 5.5V8" stroke-linecap="round"/>
+                        </svg>
+                        <span style="display: block; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-color);">Your cart is empty</span>
+                        <button class="btn" onclick="closeCart(); window.location.href='store.html#product-grid'">Browse Shop</button>
+                    </div>
+                `;
+                cartBadge.textContent = '0';
+                cartBadge.style.display = 'none';
+            } else {
+                cartBadge.style.display = 'flex';
+                cart.forEach((item, index) => {
+                    total += item.price * item.qty;
+                    itemCount += item.qty;
+                    
+                    const sizeHtml = item.size ? `<div class="cart-item-size">Size: ${item.size}</div>` : '';
+                    
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'cart-item';
+                    itemEl.innerHTML = `
+                        <div class="cart-item-image">
+                            ${item.image ? `<img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;">` : ''}
+                        </div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            ${sizeHtml}
+                            <div class="cart-item-price">£${item.price.toFixed(2)}</div>
+                            <div class="cart-item-controls">
+                                <div class="qty-controls">
+                                    <button class="qty-btn" onclick="updateQty(${index}, -1)" aria-label="Decrease quantity">-</button>
+                                    <div class="qty-display">${item.qty}</div>
+                                    <button class="qty-btn" onclick="updateQty(${index}, 1)" aria-label="Increase quantity">+</button>
+                                </div>
+                                <button class="remove-item" onclick="removeItem(${index})">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+                cartBadge.textContent = itemCount;
+            }
+
+            cartTotalEl.textContent = `£${total.toFixed(2)}`;
+        }
+        
+        updateCart();
+    </script>
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTIST | Official Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="nav-logo">ARTIST</a>
+            <div class="nav-right">
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#music">Music</a></li>
+                    <li><a href="store.html" class="active">Shop</a></li>
+                    <li><a href="tour.html">Tour</a></li>
+                </ul>
+                <div class="cart-nav" id="cart-toggle" aria-label="Open Cart">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h3.5l2.5 12h11.5l2.5-8.5H7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="10.5" cy="19.5" r="1.5"/>
+                        <circle cx="17.5" cy="19.5" r="1.5"/>
+                    </svg>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </div>
+                <div class="menu-toggle" id="mobile-menu" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Store</h1>
+            <div class="product-grid" id="product-grid">
+                <!-- Products dynamically inserted -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Mailing List Section -->
+    <section class="mailing-list">
+        <h2>Join the Club</h2>
+        <p>Get first access to tour dates, exclusive drops, and more.</p>
+        <form id="subscribe-form" class="subscribe-form" action="https://formspree.io/f/mnjybrvo" method="POST" novalidate>
+            <div class="input-wrapper">
+                <input type="email" id="email" name="email" placeholder="Enter your email address" autocomplete="email" required>
+                <div id="error-msg" class="error-msg">Please enter a valid email address.</div>
+            </div>
+            <button type="submit" class="btn">Subscribe</button>
+        </form>
+        <div id="success-msg" class="success-msg">Welcome to the family! Check your inbox shortly.</div>
+    </section>
+
+    <!-- Slide-out Cart -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="close-cart" aria-label="Close Cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items dynamically inserted -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span id="cart-total">£0.00</span>
+            </div>
+            <button class="btn" style="width: 100%;" onclick="window.location.href='store.html'">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+        <div class="quick-view-overlay" id="quick-view-overlay">
+        <div class="quick-view-modal">
+            <button class="close-quick-view" id="close-quick-view" aria-label="Close Quick View">&times;</button>
+            <div class="quick-view-left" style="position: relative;" ontouchstart="handleQvTouchStart(event)" ontouchend="handleQvTouchEnd(event)">
+                <div id="qv-badge-container"></div>
+                <img src="" id="qv-image" alt="Product Image" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div class="carousel-dots" id="qv-carousel-dots"></div>
+            </div>
+            <div class="quick-view-right">
+                <h2 class="qv-name" id="qv-name"></h2>
+                <div class="qv-price" id="qv-price"></div>
+                <p class="qv-desc">Experience the ultimate comfort and style with our signature merch. Made from premium, sustainably sourced materials, this piece offers a relaxed fit perfect for everyday wear or your next concert outing.</p>
+                <div id="qv-size-container"></div>
+                <div class="qv-actions">
+                    <button class="btn btn-secondary" id="qv-add-cart">Add to Cart</button>
+                    <a href="#" target="_blank" class="btn btn-dark" id="qv-buy-now">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-bottom; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        Buy Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-copy">&copy; <span id="current-year"></span> ARTIST. All Rights Reserved.</div>
+        <div class="footer-socials">
+            <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" aria-label="Spotify">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.394-.756.52-1.15.28-3.153-1.928-7.126-2.366-11.805-1.296-.45.103-.895-.178-.998-.627-.103-.45.178-.895.627-.998 5.105-1.168 9.508-.68 13.045 1.493.394.24.52.756.28 1.15zm1.44-3.238c-.302.492-.947.648-1.44.346-3.6-2.213-9.102-2.825-12.784-1.545-.552.192-1.155-.101-1.347-.653-.192-.552.101-1.155.653-1.347 4.25-1.477 10.354-.805 14.572 1.759.493.302.648.947.346 1.44zm.135-3.402c-4.306-2.557-11.41-2.793-15.52-1.545-.662.201-1.365-.173-1.566-.835-.201-.662.173-1.365.835-1.566 4.743-1.442 12.602-1.171 17.585 1.815.58.345.766 1.093.42 1.673-.346.58-1.093.766-1.674.42z"/></svg>
+            </a>
+            <a href="#" aria-label="Apple Music">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.87 2.235c.784-.962 1.31-2.202 1.155-3.413-1.05.042-2.392.709-3.208 1.671-.726.852-1.353 2.126-1.173 3.315 1.17.09 2.417-.585 3.226-1.573zm4.56 11.236c-.021-2.585 2.086-3.821 2.18-3.879-1.2-1.755-3.076-1.993-3.75-2.029-1.597-.16-3.118 1.05-3.931 1.05-.815 0-2.072-1.01-3.393-.98-1.713.031-3.298.995-4.184 2.535-1.799 3.125-.459 7.747 1.298 10.282.855 1.235 1.868 2.628 3.188 2.576 1.267-.055 1.752-.824 3.284-.824 1.533 0 1.986.824 3.315.795 1.359-.028 2.227-1.264 3.072-2.483 1.03-1.5 1.455-2.955 1.476-3.03-.031-.013-2.756-1.057-2.755-4.013z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const placeholderImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect width='600' height='600' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23999'%3EProduct Image%3C/text%3E%3C/svg%3E";
+
+        // Dynamic Year Update
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mailing list form logic
+        const subscribeForm = document.getElementById('subscribe-form');
+        if (subscribeForm) {
+            const emailInput = document.getElementById('email');
+            const errorMsg = document.getElementById('error-msg');
+            const successMsg = document.getElementById('success-msg');
+            
+            emailInput.addEventListener('input', () => {
+                errorMsg.style.display = 'none';
+                emailInput.classList.remove('input-error');
+            });
+
+            subscribeForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                errorMsg.style.display = 'none';
+                successMsg.style.display = 'none';
+                emailInput.classList.remove('input-error');
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value.trim())) {
+                    errorMsg.textContent = 'Please enter a valid email address.';
+                    errorMsg.style.display = 'block';
+                    emailInput.classList.add('input-error');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(this.action, {
+                        method: this.method,
+                        body: new FormData(this),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (response.ok) {
+                        this.style.display = 'none';
+                        successMsg.style.display = 'block';
+                    } else {
+                        errorMsg.textContent = 'Oops! There was a problem submitting your form.';
+                        errorMsg.style.display = 'block';
+                        emailInput.classList.add('input-error');
+                    }
+                } catch (error) {
+                    errorMsg.textContent = 'Oops! There was a problem submitting your form.';
+                    errorMsg.style.display = 'block';
+                    emailInput.classList.add('input-error');
+                }
+            });
+        }
+
+        // Mobile Menu Logic
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        if (mobileMenu && navMenu) {
+            mobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.toggle('is-active');
+                navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('is-active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        const products = [
+            { id: 1, name: 'Album T-Shirt', price: 35, sizes: ['S', 'M', 'L', 'XL'], stripeLink: 'https://buy.stripe.com/test_9B66oA4PL6hQ4j2e2x3AY04', images: ['https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=600&h=600', 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=600&h=600'] },
+            { id: 2, name: 'Debut Hoodie', price: 65, sizes: ['S', 'M', 'L', 'XL'], stripeLink: 'https://buy.stripe.com/test_bJe00ceqlay616Q6A53AY03', image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=600&h=600', badge: { type: 'bestseller', text: 'Best Seller' } },
+            { id: 3, name: 'Limited Vinyl', price: 30, stripeLink: 'https://buy.stripe.com/test_6oU00ccid35E02Mf6B3AY02', image: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&q=80&w=600&h=600', badge: { type: 'limited', text: 'Limited' } },
+            { id: 4, name: 'Album Art Poster', price: 20, stripeLink: 'https://buy.stripe.com/test_4gM5kw6XTeOm8zi1fL3AY01', image: 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?auto=format&fit=crop&q=80&w=600&h=600' },
+            { id: 5, name: 'Classic Dad Hat', price: 25, sizes: ['One Size'], stripeLink: 'https://buy.stripe.com/test_00w6oAgyteOm8zi9Mh3AY00' }
+        ];
+
+        let cart = [];
+
+    // Global state for image carousels
+    const carouselIndices = {};
+
+    // Load cart from localStorage
+    const savedCart = localStorage.getItem('diana_cart');
+    if (savedCart) {
+        try { cart = JSON.parse(savedCart); } catch (e) {}
+    }
+
+        // Elements
+        const productGrid = document.getElementById('product-grid');
+        const cartToggle = document.getElementById('cart-toggle');
+        const closeCartBtn = document.getElementById('close-cart');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalEl = document.getElementById('cart-total');
+        const cartBadge = document.getElementById('cart-badge');
+
+        // Render Products
+        function renderProducts() {
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                let sizeSelectorHTML = '';
+                if (product.sizes) {
+                    const options = product.sizes.map(size => `<option value="${size}">${size}</option>`).join('');
+                    sizeSelectorHTML = `
+                        <select class="size-selector" id="size-${product.id}" aria-label="Size for ${product.name}">
+                            ${options}
+                        </select>
+                    `;
+                }
+
+                let badgeHTML = '';
+                if (product.badge) {
+                    badgeHTML = `<div class="product-badge badge-${product.badge.type}">${product.badge.text}</div>`;
+                }
+
+                let imageHTML = '';
+                if (product.images && product.images.length > 1) {
+                    const dotsHTML = product.images.map((_, index) => 
+                        `<div class="carousel-dot ${index === 0 ? 'active' : ''}" onclick="event.stopPropagation(); setCarouselImage(${product.id}, ${index})"></div>`
+                    ).join('');
+
+                    imageHTML = `
+                        <div class="carousel" id="carousel-${product.id}" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event, ${product.id})">
+                            <img src="${product.images[0]}" alt="${product.name}" class="carousel-img" onclick="openQuickView(${product.id})" style="cursor: pointer; width: 100%; height: 100%; object-fit: cover;">
+                            <div class="carousel-dots">
+                                ${dotsHTML}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    const imgUrl = product.images ? product.images[0] : (product.image || placeholderImg);
+                    imageHTML = `<img src="${imgUrl}" alt="${product.name}" onclick="openQuickView(${product.id})" style="cursor: pointer; width: 100%; height: 100%; object-fit: cover; display: block;">`;
+                }
+
+                card.innerHTML = `
+                    <div class="product-image">
+                        ${badgeHTML}
+                        ${imageHTML}
+                    </div>
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-price">£${product.price.toFixed(2)}</div>
+                    <div class="product-controls">
+                        ${sizeSelectorHTML}
+                        <button class="btn btn-secondary" onclick="addToCart(${product.id})">Add to Cart</button>
+                        <a href="${product.stripeLink}" target="_blank" class="btn btn-dark">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-bottom; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            Buy Now
+                        </a>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        // Cart Actions
+        window.addToCart = function(productId, sizeOverride = null) {
+            const product = products.find(p => p.id === productId);
+            let selectedSize = sizeOverride;
+            
+            if (product.sizes && !sizeOverride) {
+                const sizeSelect = document.getElementById(`size-${product.id}`);
+                selectedSize = sizeSelect.value;
+            }
+
+            const existingItem = cart.find(item => item.id === productId && item.size === selectedSize);
+            
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    size: selectedSize,
+                    qty: 1,
+                    image: product.image || (product.images ? product.images[0] : placeholderImg)
+                });
+            }
+
+            updateCart();
+            
+            // Toast Feedback
+            showToast(`✓ ${product.name} added to cart`);
+            
+            // Pulse badge
+            cartBadge.classList.remove('pulse');
+            void cartBadge.offsetWidth; // trigger reflow
+            cartBadge.classList.add('pulse');
+        };
+
+    function showToast(message) {
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        container.appendChild(toast);
+        
+        requestAnimationFrame(() => toast.classList.add('show'));
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 2000);
+    }
+
+        window.updateQty = function(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCart();
+        };
+
+        window.removeItem = function(index) {
+            cart.splice(index, 1);
+            updateCart();
+        };
+
+        function updateCart() {
+        localStorage.setItem('diana_cart', JSON.stringify(cart));
+        
+            let total = 0;
+            let itemCount = 0;
+            
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart-msg">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 0.5rem; color: #ccc;">
+                            <path d="M4 8h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 19.5V8z" stroke-linejoin="round"/>
+                            <path d="M8 8V5.5A3.5 3.5 0 0 1 11.5 2h1A3.5 3.5 0 0 1 16 5.5V8" stroke-linecap="round"/>
+                        </svg>
+                        <span style="display: block; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-color);">Your cart is empty</span>
+                        <button class="btn" onclick="closeCart(); window.location.href='store.html#product-grid'">Browse Shop</button>
+                    </div>
+                `;
+                cartBadge.textContent = '0';
+                cartBadge.style.display = 'none'; // Optional: hide badge if empty
+            } else {
+                cartBadge.style.display = 'flex';
+                cart.forEach((item, index) => {
+                    total += item.price * item.qty;
+                    itemCount += item.qty;
+                    
+                    const sizeHtml = item.size ? `<div class="cart-item-size">Size: ${item.size}</div>` : '';
+                    
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'cart-item';
+                    itemEl.innerHTML = `
+                        <div class="cart-item-image">
+                            ${item.image ? `<img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;">` : ''}
+                        </div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            ${sizeHtml}
+                            <div class="cart-item-price">£${item.price.toFixed(2)}</div>
+                            <div class="cart-item-controls">
+                                <div class="qty-controls">
+                                    <button class="qty-btn" onclick="updateQty(${index}, -1)" aria-label="Decrease quantity">-</button>
+                                    <div class="qty-display">${item.qty}</div>
+                                    <button class="qty-btn" onclick="updateQty(${index}, 1)" aria-label="Increase quantity">+</button>
+                                </div>
+                                <button class="remove-item" onclick="removeItem(${index})">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+                cartBadge.textContent = itemCount;
+            }
+
+            cartTotalEl.textContent = `£${total.toFixed(2)}`;
+        }
+
+        // Sidebar Toggle
+        function openCart() {
+            cartOverlay.classList.add('active');
+            cartSidebar.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            cartOverlay.classList.remove('active');
+            cartSidebar.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        cartToggle.addEventListener('click', openCart);
+        closeCartBtn.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+
+        // Initialize
+        renderProducts();
+        updateCart(); // Set initial badge state
+
+        // Quick View Logic
+        const qvOverlay = document.getElementById('quick-view-overlay');
+        const closeQvBtn = document.getElementById('close-quick-view');
+        let currentQvProductId = null;
+
+        window.openQuickView = function(productId) {
+            const product = products.find(p => p.id === productId);
+            currentQvProductId = productId;
+            
+            const currentIndex = carouselIndices[productId] || 0;
+            const imgUrl = product.images ? product.images[currentIndex] : (product.image || placeholderImg);
+            document.getElementById('qv-image').src = imgUrl;
+            
+            const qvBadgeContainer = document.getElementById('qv-badge-container');
+            if (product.badge) {
+                qvBadgeContainer.innerHTML = `<div class="product-badge badge-${product.badge.type}">${product.badge.text}</div>`;
+            } else {
+                qvBadgeContainer.innerHTML = '';
+            }
+
+            const qvDotsContainer = document.getElementById('qv-carousel-dots');
+            if (product.images && product.images.length > 1) {
+                qvDotsContainer.innerHTML = product.images.map((_, index) => 
+                    `<div class="carousel-dot ${index === currentIndex ? 'active' : ''}" onclick="setQvImage(${productId}, ${index})"></div>`
+                ).join('');
+            } else {
+                qvDotsContainer.innerHTML = '';
+            }
+
+            document.getElementById('qv-name').textContent = product.name;
+            document.getElementById('qv-price').textContent = `£${product.price.toFixed(2)}`;
+            
+            const sizeContainer = document.getElementById('qv-size-container');
+            if (product.sizes) {
+                const options = product.sizes.map(size => `<option value="${size}">${size}</option>`).join('');
+                sizeContainer.innerHTML = `
+                    <select class="size-selector" id="qv-size" aria-label="Size for ${product.name}" style="margin-bottom: 1.5rem;">
+                        ${options}
+                    </select>
+                `;
+            } else {
+                sizeContainer.innerHTML = '';
+            }
+
+            document.getElementById('qv-buy-now').href = product.stripeLink;
+            
+            qvOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        function closeQuickView() {
+            qvOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeQvBtn.addEventListener('click', closeQuickView);
+        qvOverlay.addEventListener('click', function(e) {
+            if (e.target === qvOverlay) closeQuickView();
+        });
+
+        document.getElementById('qv-add-cart').addEventListener('click', function() {
+            if (!currentQvProductId) return;
+            const product = products.find(p => p.id === currentQvProductId);
+            let selectedSize = null;
+            if (product.sizes) {
+                selectedSize = document.getElementById('qv-size').value;
+            }
+            addToCart(currentQvProductId, selectedSize);
+            closeQuickView();
+        });
+
+        // Carousel Logic
+        window.setCarouselImage = function(productId, index) {
+            const product = products.find(p => p.id === productId);
+            carouselIndices[productId] = index;
+            document.querySelector(`#carousel-${productId} .carousel-img`).src = product.images[index];
+            
+            const dots = document.querySelectorAll(`#carousel-${productId} .carousel-dot`);
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        };
+        
+        window.setQvImage = function(productId, index) {
+            const product = products.find(p => p.id === productId);
+            document.getElementById('qv-image').src = product.images[index];
+            
+            const qvDots = document.querySelectorAll('#qv-carousel-dots .carousel-dot');
+            qvDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            
+            // Keep the main grid carousel synced with what the user selects in quick view
+            setCarouselImage(productId, index);
+        };
+
+        // Touch / Swipe Logic for Product Cards
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        window.handleTouchStart = function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        };
+
+        window.handleTouchEnd = function(e, productId) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe(productId);
+        };
+
+        function handleSwipe(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || !product.images || product.images.length <= 1) return;
+            
+            const swipeThreshold = 50;
+            let currentIndex = carouselIndices[productId] || 0;
+
+            if (touchEndX < touchStartX - swipeThreshold) {
+                currentIndex = (currentIndex + 1) % product.images.length;
+                setCarouselImage(productId, currentIndex);
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                currentIndex = (currentIndex - 1 + product.images.length) % product.images.length;
+                setCarouselImage(productId, currentIndex);
+            }
+        }
+
+        // Touch / Swipe Logic for Quick View Modal
+        let qvTouchStartX = 0;
+        let qvTouchEndX = 0;
+
+        window.handleQvTouchStart = function(e) {
+            qvTouchStartX = e.changedTouches[0].screenX;
+        };
+
+        window.handleQvTouchEnd = function(e) {
+            qvTouchEndX = e.changedTouches[0].screenX;
+            if (!currentQvProductId) return;
+            
+            // Piggyback off the main card swipe handler to reuse the math logic
+            handleSwipe(currentQvProductId);
+        };
+    </script>
+</body>
+</html>
